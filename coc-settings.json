@@ -1,0 +1,9 @@
+{
+	"languageserver": {
+		"veridian": {
+			"command": "veridian",
+			"filetypes": ["systemverilog", "verilog"]
+		}
+	},
+	"coc.preferences.formatOnSaveFiletypes": ["markdown", "rust", "go", "verilog", "systemverilog"]
+}
