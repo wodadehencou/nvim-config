@@ -84,12 +84,12 @@ set completeopt=longest,menu
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
-" nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-" nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap k gk
-nnoremap gk k 
-nnoremap j gj
-nnoremap gj j 
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+" nnoremap k gk
+" nnoremap gk k
+" nnoremap j gj
+" nnoremap gj j
 
 " 调整缩进后自动选中，方便再次操作
 vnoremap < <gv
