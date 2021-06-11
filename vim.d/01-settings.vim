@@ -103,10 +103,13 @@ map Y y$
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " 回车即选中当前项
-" imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-imap <expr> <cr> pumvisible() ? "\<c-y>" : "\<Plug>delimitMateCR"
-imap <expr> <tab> delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" : "<tab>"
-inoremap <expr> <S-Tab> delimitMate#JumpAny()
+if !exists('g:vscode')
+	imap <expr> <cr> pumvisible() ? "\<c-y>" : "\<Plug>delimitMateCR"
+	imap <expr> <tab> delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" : "<tab>"
+	inoremap <expr> <S-Tab> delimitMate#JumpAny()
+else
+	imap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+endif
 
 " In the quickfix window, <CR> is used to jump to the error under the
 " cursor, so undefine the mapping there.
@@ -228,7 +231,8 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 
 " 复制选中区到系统剪切板中
 vnoremap <leader>y "+y
-set clipboard^=unnamedplus
+" this line will cause visual block paste fail
+" set clipboard^=unnamedplus
 
 " Quickly close the current window
 nnoremap <leader>q :q<CR>

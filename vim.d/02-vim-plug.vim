@@ -13,7 +13,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', Cond( !exists('g:vscode'), { 'on': 'NERDTreeToggle' })
 Plug 'Xuyuanp/nerdtree-git-plugin', Cond( !exists('g:vscode'), { 'on': 'NERDTreeToggle' })
 
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary', Cond(!exists('g:vscode'))
+" Plug 'tyru/caw.vim', Cond(!exists('g:vscode'))
 Plug 'luochen1990/rainbow'
 
 Plug 'vim-airline/vim-airline', Cond(!exists('g:vscode'))
@@ -31,7 +32,7 @@ Plug 'tpope/vim-repeat'
 
 " auto close () []
 " Plug 'jiangmiao/auto-pairs'
-Plug 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate', Cond(!exists('g:vscode'))
 
 " quick locate file or function
 " 文件搜索
@@ -65,11 +66,12 @@ Plug 'neoclide/coc.nvim', Cond( !exists('g:vscode'), {'branch': 'release'} )
 " Plug 'neoclide/coc-lists', Cond( !exists('g:vscode'), {'do': 'yarn install --frozen-lockfile'} )
 
 Plug 'rust-lang/rust.vim'
+Plug 'pboettch/vim-cmake-syntax'
 
 " Plug 'elzr/vim-json', Cond(!exists('g:vscode'),  {'for': 'json'})
 "
 " auto change input method
-Plug 'rlue/vim-barbaric'
+" Plug 'rlue/vim-barbaric'
 
 
 " colorscheme
@@ -80,7 +82,7 @@ Plug 'sainnhe/edge'
 " Plug 'godlygeek/csapprox'
 
 " display code as auto folder, very cool
-Plug 'wellle/context.vim'
+" Plug 'wellle/context.vim'
 
 
 call plug#end()
