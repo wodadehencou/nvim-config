@@ -18,7 +18,7 @@ inoremap <C-j> <C-r>=g:JInPMU()<cr>
 inoremap <C-k> <C-r>=g:KInPMU()<cr>
 
 if !exists('g:vscode')
-	let g:coc_global_extensions = ['coc-tabnine', 'coc-rust-analyzer', 'coc-go', 'coc-json', 'coc-clangd', 'coc-snippets', 'coc-yaml', 'coc-vimlsp', 'coc-markdownlint', 'coc-lists', 'coc-prettier', 'coc-fish']
+	let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-go', 'coc-json', 'coc-clangd', 'coc-snippets', 'coc-yaml', 'coc-vimlsp', 'coc-markdownlint', 'coc-lists', 'coc-prettier', 'coc-fish', 'coc-python', 'coc-actions']
 
 	" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 	" delays and poor user experience.
@@ -61,6 +61,7 @@ if !exists('g:vscode')
 
 	" Add `:OR` command for organize imports of the current buffer.
 	command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 
 	" Lookup the keyword under cursor with K, and shows translation in preview/floating window if found.
@@ -99,5 +100,13 @@ if !exists('g:vscode')
 	" replace ctrl p
 	nnoremap <silent><nowait> <c-p>  :<C-u>CocList files<cr>
 	nnoremap <silent><nowait> <leader>f  :<C-u>CocList mru<cr>
+
+	" Remap for do codeAction of selected region
+	" function! s:cocActionsOpenFromSelected(type) abort
+	" 	execute 'CocCommand actions.open ' . a:type
+	" endfunction
+	" xmap <silent> <leader>. :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+	" nmap <silent> <leader>. :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
 endif
 

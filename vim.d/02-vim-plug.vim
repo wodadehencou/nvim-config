@@ -84,5 +84,7 @@ Plug 'sainnhe/edge'
 " display code as auto folder, very cool
 " Plug 'wellle/context.vim'
 
+" code snippets
+Plug 'honza/vim-snippets'
 
 call plug#end()

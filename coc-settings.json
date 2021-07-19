@@ -6,5 +6,9 @@
 		}
 	},
 	"clangd.path": "/usr/local/opt/llvm/bin/clangd",
-	"coc.preferences.formatOnSaveFiletypes": ["markdown", "rust", "go", "verilog", "systemverilog"]
+	"coc.preferences.formatOnSaveFiletypes": ["markdown", "rust", "go", "verilog", "systemverilog"],
+	"go.goplsOptions": {
+		"usePlaceholders": true,
+		"completeUnimported": true
+	}
 }
