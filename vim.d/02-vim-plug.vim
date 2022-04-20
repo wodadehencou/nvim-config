@@ -80,11 +80,23 @@ Plug 'pboettch/vim-cmake-syntax'
 Plug 'sainnhe/edge'
 " make terminal colorscheme the same as gui
 " Plug 'godlygeek/csapprox'
+Plug 'sainnhe/archived-colors'
+
+" transparent backgroud
+Plug 'tribela/vim-transparent'
 
 " display code as auto folder, very cool
 " Plug 'wellle/context.vim'
 
 " code snippets
 Plug 'honza/vim-snippets'
+
+" nginx conf highlight
+Plug 'chr4/nginx.vim'
+
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+Plug 'Konfekt/FastFold', Cond(!exists('g:vscode'))
 
 call plug#end()

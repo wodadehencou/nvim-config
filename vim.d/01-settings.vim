@@ -84,8 +84,10 @@ set completeopt=longest,menu
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+" nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+" nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nmap <expr> k (v:count == 0 ? 'gk' : 'k')
+nmap <expr> j (v:count == 0 ? 'gj' : 'j')
 " nnoremap k gk
 " nnoremap gk k
 " nnoremap j gj
@@ -248,3 +250,6 @@ au BufReadPost *
 \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
 \ |   exe "normal! g`\""
 \ | endif
+
+" exchange " and ', fast paste register
+nnoremap ' "
