@@ -15,7 +15,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', Cond( !exists('g:vscode'), { 'on': 'NERDTree
 
 Plug 'tpope/vim-commentary', Cond(!exists('g:vscode'))
 " Plug 'tyru/caw.vim', Cond(!exists('g:vscode'))
-Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow', Cond(!exists('g:vscode'))
 
 Plug 'vim-airline/vim-airline', Cond(!exists('g:vscode'))
 Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:vscode'))
@@ -31,8 +31,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " auto close () []
-" Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs', Cond(!exists('g:vscode'))
 Plug 'Raimondi/delimitMate', Cond(!exists('g:vscode'))
+" Plug 'windwp/nvim-autopairs'
 
 " quick locate file or function
 " 文件搜索
@@ -46,7 +47,7 @@ Plug 'airblade/vim-gitgutter', Cond(!exists('g:vscode'))
 Plug 'easymotion/vim-easymotion'
 
 " align
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 
 " Plug 'plasticboy/vim-markdown', Cond(!exists('g:vscode'), {'for': 'md'})
 
@@ -83,7 +84,7 @@ Plug 'sainnhe/edge'
 Plug 'sainnhe/archived-colors'
 
 " transparent backgroud
-Plug 'tribela/vim-transparent'
+" Plug 'tribela/vim-transparent'
 
 " display code as auto folder, very cool
 " Plug 'wellle/context.vim'
@@ -97,6 +98,12 @@ Plug 'chr4/nginx.vim'
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-Plug 'Konfekt/FastFold', Cond(!exists('g:vscode'))
+" make column seq number
+Plug 'vim-scripts/VisIncr'
+
+" float terminal
+Plug 'voldikss/vim-floaterm'
+
+" Plug 'Konfekt/FastFold', Cond(!exists('g:vscode'))
 
 call plug#end()

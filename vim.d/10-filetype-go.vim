@@ -1,1 +1,1 @@
-autocmd FileType go setlocal foldmethod=syntax
+" autocmd FileType go setlocal foldmethod=syntax

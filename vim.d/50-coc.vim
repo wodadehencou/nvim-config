@@ -1,23 +1,28 @@
-func! g:JInPMU()
-	if pumvisible()
-		return "\<C-n>"
-	else
-		return "\<c-j>"
-	endif
-endfunction
-
-func! g:KInPMU()
-	if pumvisible()
-		return "\<C-p>"
-	else
-		return "\<c-k>"
-	endif
-endfunction
-
-inoremap <C-j> <C-r>=g:JInPMU()<cr>
-inoremap <C-k> <C-r>=g:KInPMU()<cr>
-
 if !exists('g:vscode')
+	func! g:JInPMU()
+		" if pumvisible()
+		if coc#pum#visible()
+			return "\<C-n>"
+		else
+			return "\<c-j>"
+		endif
+	endfunction
+
+	func! g:KInPMU()
+		if coc#pum#visible()
+			return "\<C-p>"
+		else
+			return "\<c-k>"
+		endif
+	endfunction
+
+	" inoremap <C-j> <C-r>=g:JInPMU()<cr>
+	" inoremap <C-k> <C-r>=g:KInPMU()<cr>
+
+	" 上下左右键的行为 会显示其他信息
+	inoremap <expr> <Down> coc#pum#visible() ? coc#pum#next(1) :  pumvisible() ? "\<C-n>" : "\<Down>"
+	inoremap <expr> <Up>   coc#pum#visible() ? coc#pum#prev(1) : pumvisible() ? "\<C-p>" : "\<Up>"
+
 	let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-go', 'coc-json', 'coc-clangd', 'coc-snippets', 'coc-yaml', 'coc-vimlsp', 'coc-markdownlint', 'coc-lists', 'coc-prettier', 'coc-fish', 'coc-python', 'coc-actions']
 
 	" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

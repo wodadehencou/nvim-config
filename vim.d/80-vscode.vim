@@ -7,14 +7,17 @@ if(exists("g:vscode"))
 	nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
 	nnoremap za :call VSCodeNotify('editor.toggleFold')<CR>
 
-	function! MoveCursor(direction) abort
-		if(reg_recording() == '' && reg_executing() == '')
-			return 'g'.a:direction
-		else
-			return a:direction
-		endif
-	endfunction
+	set nocursorcolumn
+	set nocursorline
 
-	nmap <expr> j MoveCursor('j')
-	nmap <expr> k MoveCursor('k')
+	" function! MoveCursor(direction) abort
+	" 	if(reg_recording() == '' && reg_executing() == '')
+	" 		return 'g'.a:direction
+	" 	else
+	" 		return a:direction
+	" 	endif
+	" endfunction
+
+	" nmap <expr> j MoveCursor('j')
+	" nmap <expr> k MoveCursor('k')
 endif

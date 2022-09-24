@@ -1,1 +1,2 @@
-autocmd FileType c,cpp setlocal foldmethod=syntax
+" autocmd FileType c,cpp setlocal
+" foldmethod=syntax

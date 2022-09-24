@@ -53,8 +53,9 @@ set nobackup
 set nowritebackup
 
 " 上下左右键的行为 会显示其他信息
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+" move to coc setting
+" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
 
 " 缩进配置
 " Smart indent
@@ -84,14 +85,21 @@ set completeopt=longest,menu
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
-" nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-" nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nmap <expr> k (v:count == 0 ? 'gk' : 'k')
-nmap <expr> j (v:count == 0 ? 'gj' : 'j')
-" nnoremap k gk
-" nnoremap gk k
-" nnoremap j gj
-" nnoremap gj j
+if !exists("g:vscode")
+	nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+	nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+else
+	function! MoveCursor(direction) abort
+		if(reg_recording() == '' && reg_executing() == '')
+			return 'g'.a:direction
+		else
+			return a:direction
+		endif
+	endfunction
+
+	nnoremap <expr> j MoveCursor('j')
+	nnoremap <expr> k MoveCursor('k')
+endif
 
 " 调整缩进后自动选中，方便再次操作
 vnoremap < <gv
@@ -105,6 +113,8 @@ map Y y$
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " 回车即选中当前项
+" imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
 if !exists('g:vscode')
 	imap <expr> <cr> pumvisible() ? "\<c-y>" : "\<Plug>delimitMateCR"
 	imap <expr> <tab> delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" : "<tab>"
@@ -126,13 +136,6 @@ noremap L $
 
 " Map ; to : and save a million keystrokes 用于快速进入命令行
 nnoremap ; :
-
-
-" 命令行模式增强，ctrl - a到行首， -e 到行尾
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 
 
 " ======================================================================
@@ -253,3 +256,5 @@ au BufReadPost *
 
 " exchange " and ', fast paste register
 nnoremap ' "
+
+
