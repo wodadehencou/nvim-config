@@ -24,4 +24,4 @@ else
 endif
 
 " imap <expr> <cr> pumvisible() ? "\<c-y>" : "\<Plug>delimitMateCR"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
